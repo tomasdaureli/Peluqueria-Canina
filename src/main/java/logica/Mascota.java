@@ -1,18 +1,27 @@
 package logica;
 
-public class Mascota {
+import java.io.Serializable;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity
+public class Mascota implements Serializable {
     
+    @Id
+    @GeneratedValue (strategy = GenerationType.SEQUENCE)
     private int id;
     private String nombre, raza, color, observaciones;
-    private boolean alergico;
-    private boolean atencion_especial;
+    private String alergico;
+    private String atencion_especial;
     private Duenio unDuenio;
     
     public Mascota() {
     }
 
-    public Mascota(int id, String nombre, String raza, String color, String observaciones, boolean alergico,
-            boolean atencion_especial, Duenio unDuenio) {
+    public Mascota(int id, String nombre, String raza, String color, String observaciones, String alergico,
+            String atencion_especial, Duenio unDuenio) {
         this.id = id;
         this.nombre = nombre;
         this.raza = raza;
@@ -63,19 +72,19 @@ public class Mascota {
         this.observaciones = observaciones;
     }
 
-    public boolean isAlergico() {
+    public String isAlergico() {
         return alergico;
     }
 
-    public void setAlergico(boolean alergico) {
+    public void setAlergico(String alergico) {
         this.alergico = alergico;
     }
 
-    public boolean isAtencion_especial() {
+    public String isAtencion_especial() {
         return atencion_especial;
     }
 
-    public void setAtencion_especial(boolean atencion_especial) {
+    public void setAtencion_especial(String atencion_especial) {
         this.atencion_especial = atencion_especial;
     }
 

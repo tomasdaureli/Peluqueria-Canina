@@ -1,8 +1,16 @@
 package gui;
 
+import javax.swing.JDialog;
+import javax.swing.JOptionPane;
+
+import logica.Controlador;
+
 public class CargaDatos extends javax.swing.JFrame {
 
+    Controlador control = new Controlador();
+
     public CargaDatos() {
+        // control = new Controlador();
         initComponents();
     }
 
@@ -74,6 +82,11 @@ public class CargaDatos extends javax.swing.JFrame {
         cmbAtEsp.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-", "Si", "No" }));
 
         btnGuardar.setText("Guardar");
+        btnGuardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGuardarActionPerformed(evt);
+            }
+        });
 
         btnLimpiar.setText("Limpiar");
         btnLimpiar.addActionListener(new java.awt.event.ActionListener() {
@@ -197,6 +210,26 @@ public class CargaDatos extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
+        String nombre = txtNombre.getText();
+        String raza = txtRaza.getText();
+        String color = txtColor.getText();
+        String duenio = txtDuenio.getText();
+        String contacto = txtContacto.getText();
+        String observaciones = txtObservaciones.getText();
+        String alergico = (String) cmbAlergico.getSelectedItem();
+        String atEsp = (String) cmbAtEsp.getSelectedItem();
+        
+        control.guardar(nombre, raza, color, duenio, contacto, observaciones, alergico, atEsp);
+
+        JOptionPane optionPane = new JOptionPane("Se guardó correctamente");
+        optionPane.setMessageType(JOptionPane.INFORMATION_MESSAGE);
+        JDialog dialog = optionPane.createDialog("Peluqueria Canina");
+        dialog.setAlwaysOnTop(true);
+        dialog.setVisible(true);
+
+    }//GEN-LAST:event_btnGuardarActionPerformed
 
     private void btnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {
         txtNombre.setText("");
