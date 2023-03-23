@@ -6,6 +6,8 @@ import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
+import org.eclipse.persistence.jpa.jpql.tools.resolver.NullResolver;
+
 import logica.Controlador;
 import logica.Mascota;
 import persistencia.exceptions.NonexistentEntityException;
@@ -67,6 +69,11 @@ public class VerDatos extends javax.swing.JFrame {
 
         BtnEditar.setFont(new java.awt.Font("Helvetica Neue", 0, 24)); // NOI18N
         BtnEditar.setText("📝");
+        BtnEditar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnEditarActionPerformed(evt);
+            }
+        });
 
         BtnEliminar.setFont(new java.awt.Font("Helvetica Neue", 0, 24)); // NOI18N
         BtnEliminar.setText("❌");
@@ -182,7 +189,7 @@ public class VerDatos extends javax.swing.JFrame {
                 mostrarMensaje("Mascota eliminada correctamente.", "Info", "Borrado de mascota");
                 cargarTabla();
             } else {
-                mostrarMensaje("No has seleccionado ninguna mascota.", "Error", "Error al eliminar");
+                mostrarMensaje("No has seleccionado ninguna mascota.", "Error", "Error");
             }
         } else {
             mostrarMensaje("No hay nada para eliminar.", "Error", "Tabla vacia");
@@ -201,17 +208,40 @@ public class VerDatos extends javax.swing.JFrame {
         dialog.setVisible(true);
     }
 
-    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {
         
         cargarTabla();
         
-    }//GEN-LAST:event_formWindowOpened
+    }
 
-    private void btnAtrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtrasActionPerformed
+    private void btnAtrasActionPerformed(java.awt.event.ActionEvent evt) {
         Principal pantalla = new Principal();
         pantalla.setVisible(true);
         pantalla.setLocationRelativeTo(null);
-    }//GEN-LAST:event_btnAtrasActionPerformed
+        this.dispose();
+    }
+
+    private void BtnEditarActionPerformed(java.awt.event.ActionEvent evt) {
+        // Chequeo que la tabla no este vacia
+        if (tablaMascotas.getRowCount() > 0) {
+            // Chequeo que se haya seleccionado un registro
+            if (tablaMascotas.getSelectedRow() != -1) {
+                // Obtengo el id del registro a editar
+                int num_cliente = Integer.parseInt(String.valueOf(tablaMascotas.getValueAt(tablaMascotas.getSelectedRow(), 0)));
+                
+                this.dispose();
+
+                ModificarDatos pantalla_modif = new ModificarDatos(num_cliente);
+                pantalla_modif.setVisible(true);
+                pantalla_modif.setLocationRelativeTo(null);
+                
+            } else {
+                mostrarMensaje("No has seleccionado ninguna mascota.", "Error", "Error");
+            }
+        } else {
+            mostrarMensaje("No hay nada para eliminar.", "Error", "Tabla vacia");
+        } 
+    }
 
 
     

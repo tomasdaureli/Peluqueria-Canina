@@ -26,6 +26,34 @@ public class ControladorPersistencia {
     public void borrarMascota(int num_cliente) throws NonexistentEntityException {
         mascoJpa.destroy(num_cliente);
     }
+
+    public Mascota traerMascota(int num_cliente) {
+        return mascoJpa.findMascota(num_cliente);
+    }
+
+    public void modificarMascota(Mascota masco) {
+        try {
+            mascoJpa.edit(masco);
+        } catch (NonexistentEntityException e) {
+            e.printStackTrace();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public Duenio traerDuenio(int id_duenio) {
+        return duenioJpa.findDuenio(id_duenio);
+    }
+
+    public void modificarDuenio(Duenio duenio) {
+        try {
+            duenioJpa.edit(duenio);
+        } catch (NonexistentEntityException e) {
+            e.printStackTrace();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
     
     
 }

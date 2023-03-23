@@ -37,6 +37,11 @@ public class Principal extends javax.swing.JFrame {
         });
 
         btnSalir.setText("SALIR");
+        btnSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSalirActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -106,12 +111,18 @@ public class Principal extends javax.swing.JFrame {
         CargaDatos pantalla = new CargaDatos();
         pantalla.setVisible(true);
         pantalla.setLocationRelativeTo(null);
+        this.dispose();
     }
     
     private void btnVerDatosActionPerformed(java.awt.event.ActionEvent evt) {
         VerDatos pantalla = new VerDatos();
         pantalla.setVisible(true);
         pantalla.setLocationRelativeTo(null);
+        this.dispose();
+    }
+    
+    private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {
+        System.exit(0);
     }
 
 
