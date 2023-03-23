@@ -3,6 +3,7 @@ package logica;
 import java.util.List;
 
 import persistencia.ControladorPersistencia;
+import persistencia.exceptions.NonexistentEntityException;
 
 public class Controlador {
 
@@ -33,6 +34,10 @@ public class Controlador {
 
     public List<Mascota> traerMascotas() {
         return controlPersis.traerMascotas();
+    }
+
+    public void borrarMascota(int num_cliente) throws NonexistentEntityException {
+        controlPersis.borrarMascota(num_cliente);
     }
 
     

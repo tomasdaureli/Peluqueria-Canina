@@ -4,6 +4,7 @@ import java.util.List;
 
 import logica.Duenio;
 import logica.Mascota;
+import persistencia.exceptions.NonexistentEntityException;
 
 public class ControladorPersistencia {
     
@@ -20,6 +21,10 @@ public class ControladorPersistencia {
 
     public List<Mascota> traerMascotas() {
         return mascoJpa.findMascotaEntities();
+    }
+
+    public void borrarMascota(int num_cliente) throws NonexistentEntityException {
+        mascoJpa.destroy(num_cliente);
     }
     
     
