@@ -1,5 +1,7 @@
 package persistencia;
 
+import java.util.List;
+
 import logica.Duenio;
 import logica.Mascota;
 
@@ -14,6 +16,10 @@ public class ControladorPersistencia {
         duenioJpa.create(duenio);
         mascoJpa.create(mascota);
 
+    }
+
+    public List<Mascota> traerMascotas() {
+        return mascoJpa.findMascotaEntities();
     }
     
     

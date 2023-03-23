@@ -1,5 +1,7 @@
 package logica;
 
+import java.util.List;
+
 import persistencia.ControladorPersistencia;
 
 public class Controlador {
@@ -27,6 +29,10 @@ public class Controlador {
 
         controlPersis.guardar(duenio, masco);
         
+    }
+
+    public List<Mascota> traerMascotas() {
+        return controlPersis.traerMascotas();
     }
 
     

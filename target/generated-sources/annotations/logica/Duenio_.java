@@ -1,10 +1,10 @@
 package logica;
 
-import javax.annotation.Generated;
+import javax.annotation.processing.Generated;
 import javax.persistence.metamodel.SingularAttribute;
 import javax.persistence.metamodel.StaticMetamodel;
 
-@Generated(value="EclipseLink-2.7.10.v20211216-rNA", date="2023-03-20T20:25:48")
+@Generated(value="org.eclipse.persistence.internal.jpa.modelgen.CanonicalModelProcessor", date="2023-03-23T15:40:00", comments="EclipseLink-2.7.10.v20211216-rNA")
 @StaticMetamodel(Duenio.class)
 public class Duenio_ { 
 

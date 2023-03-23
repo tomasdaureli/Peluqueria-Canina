@@ -30,6 +30,11 @@ public class Principal extends javax.swing.JFrame {
         });
 
         btnVerDatos.setText("VER DATOS");
+        btnVerDatos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVerDatosActionPerformed(evt);
+            }
+        });
 
         btnSalir.setText("SALIR");
 
@@ -99,6 +104,12 @@ public class Principal extends javax.swing.JFrame {
 
     private void btnCargarDatosActionPerformed(java.awt.event.ActionEvent evt) {
         CargaDatos pantalla = new CargaDatos();
+        pantalla.setVisible(true);
+        pantalla.setLocationRelativeTo(null);
+    }
+    
+    private void btnVerDatosActionPerformed(java.awt.event.ActionEvent evt) {
+        VerDatos pantalla = new VerDatos();
         pantalla.setVisible(true);
         pantalla.setLocationRelativeTo(null);
     }
